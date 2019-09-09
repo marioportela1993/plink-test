@@ -1,0 +1,9 @@
+exports.REQUIRED_NAME_ERROR = 'Name is required';
+exports.REQUIRED_LASTNAME_ERROR = 'Lastname is required';
+exports.INVALID_USERNAME_ERROR = 'Invalid Username';
+exports.REQUIRED_USERNAME_ERROR = 'Username is required';
+exports.INVALID_PASSWORD_ERROR = 'Invalid password';
+exports.REQUIRED_PASSWORD_ERROR = 'Password is required';
+exports.INVALID_PASSWORD_LENGTH_ERROR = 'Password should have at least 8 characters';
+exports.REQUIRED_PREFERRED_CURRENCY = 'Currency is required';
+exports.INVALID_PREFERRED_CURRENCY = 'Invalid currency. Enter one of the following: COP, USD, EUR.';
