@@ -1,6 +1,6 @@
 # plink-test
 
-plink-test
+Test to enter to Plink project
 
 ## First steps
 
