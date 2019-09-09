@@ -9,3 +9,15 @@ exports.createUser = newUser =>
       throw errors.userSignupError('User already exists in the database');
     throw errors.userSignupError('Error creating user in the database');
   });
+
+exports.findUserByUsername = username =>
+  user
+    .findOne({
+      where: {
+        username
+      }
+    })
+    .catch(err => {
+      logger.error(err.message);
+      throw errors.databaseError('Error finding username in database');
+    });
