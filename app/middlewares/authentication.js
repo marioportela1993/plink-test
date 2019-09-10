@@ -7,7 +7,7 @@ const {
   TOKEN_EXPIRED_ERROR_MSG
 } = require('../constants/errors');
 const { validateToken } = require('../helpers/token');
-const { findUserByUsername } = require('../services/user');
+const { findUserByUsername } = require('../services/users');
 
 exports.authenticate = (req, _, next) => {
   const token = req.headers[header_name];

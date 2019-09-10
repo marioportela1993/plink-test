@@ -9,7 +9,10 @@ const statusCodes = {
   [errors.USER_SIGNUP_ERROR]: 401,
   [errors.HASH_ERROR]: 500,
   [errors.SCHEMA_ERROR]: 422,
-  [errors.USER_SIGNIN_ERROR]: 401
+  [errors.USER_SIGNIN_ERROR]: 401,
+  [errors.AUTHENTICATION_ERROR]: 401,
+  [errors.BRAVE_API_ERROR]: 500,
+  [errors.ADD_CRYPTO_COIN_ERROR]: 409
 };
 
 exports.handle = (error, req, res, next) => {
