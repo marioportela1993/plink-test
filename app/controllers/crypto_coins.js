@@ -2,7 +2,7 @@ const { createCryptoCoin } = require('../services/crypto_coins');
 const logger = require('../logger');
 const { coinSerializer } = require('../serializers/crypto_coins');
 
-exports.addCypto = (req, res, next) => {
+exports.addCrypto = (req, res, next) => {
   const { id: coinId } = req.params;
   const { id: userId, name } = { ...req.session };
   return createCryptoCoin(coinId, userId)
