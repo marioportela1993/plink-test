@@ -10,3 +10,4 @@ exports.INVALID_PREFERRED_CURRENCY = 'Invalid currency. Enter one of the followi
 exports.AUTHENTICATION_ERROR_MSG = 'User no authenticated';
 exports.INVALID_TOKEN_ERROR_MSG = 'Invalid token';
 exports.TOKEN_EXPIRED_ERROR_MSG = 'Token expired';
+exports.REQUIRED_CRYPTO_COIN_ID_ERROR = 'Crypto coin id is required';

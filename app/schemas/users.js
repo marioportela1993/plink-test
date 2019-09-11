@@ -1,5 +1,5 @@
 const errors = require('../constants/errors');
-/* eslint-disable no-undef */
+
 exports.userSignUpSchema = {
   name: {
     in: ['body'],
@@ -42,7 +42,7 @@ exports.userSignUpSchema = {
     isAlphanumeric: true,
     errorMessage: errors.INVALID_PASSWORD_ERROR
   },
-  preferredCurrency: {
+  preferred_currency: {
     in: ['body'],
     isEmpty: {
       negated: true,

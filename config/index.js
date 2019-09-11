@@ -43,6 +43,16 @@ const config = {
       apiDate: process.env.API_DATE || 'X-API-Date',
       packageVersion: process.env.PACKAGE_VERSION || 'X-Package-Version',
       nodeVersion: process.env.NODE_VERSION || 'X-Node-Version'
+    },
+    braveNewCoinApi: {
+      baseUrl: process.env.BRAVE_NEW_COIN_API_URL,
+      endpoints: {
+        ticker: process.env.BRAVE_NEW_COIN_API_TICKER_ENDPOINT
+      },
+      headers: {
+        xApiHost: process.env.BRAVE_NEW_COIN_API_X_API_HOST,
+        xApiKey: process.env.BRAVE_NEW_COIN_API_X_API_KEY
+      }
     }
   }
 };

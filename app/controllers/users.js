@@ -1,7 +1,8 @@
 const logger = require('../logger');
 const errors = require('../errors');
-const { userSerializer } = require('../serializers/user');
-const { createUser, findUserByUsername } = require('../services/user');
+const { userMapper } = require('../mappers/users');
+const { userSerializer } = require('../serializers/users');
+const { createUser, findUserByUsername } = require('../services/users');
 const { encryptPassword, comparePassword } = require('../helpers/users');
 const { generateToken } = require('../helpers/token');
 
@@ -23,7 +24,7 @@ const loginUser = (username, password) =>
     });
 
 exports.signUp = (req, res, next) => {
-  const newUser = req.body;
+  const newUser = userMapper(req.body);
   return encryptPassword(newUser.password)
     .then(hash => createUser({ ...newUser, password: hash }))
     .then(createdUser => {
@@ -34,7 +35,7 @@ exports.signUp = (req, res, next) => {
 };
 
 exports.logIn = (req, res, next) => {
-  const { username, password } = req.body;
+  const { username, password } = userMapper(req.body);
   return loginUser(username, password)
     .then(token => {
       logger.info(`User ${username} Logged in in successfully`);

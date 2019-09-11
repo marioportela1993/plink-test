@@ -37,5 +37,10 @@ module.exports = (sequelize, DataTypes) => {
       underscored: true
     }
   );
+  user.associate = models => {
+    user.hasMany(models.cryptoCoin, {
+      foreignKey: 'userId'
+    });
+  };
   return user;
 };
