@@ -12,4 +12,5 @@ exports.init = app => {
   app.post('/users/login', [schemaValidator(userLogInSchema)], users.logIn);
   app.post('/users/cryptos/:id', [authenticate, schemaValidator(addCryptoSchema)], cryptoCoins.addCrypto);
   app.get('/users/cryptos', [authenticate], cryptoCoins.getCryptos);
+  app.get('/users/top_cryptos', [authenticate], cryptoCoins.getTopCryptos);
 };
