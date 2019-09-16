@@ -1,5 +1,5 @@
 const logger = require('../logger');
-const { getCryptoCoinsListByUser } = require('../interactors/crypto_coins');
+const { getCryptoCoinsListByUser, getTopCryptosByUser } = require('../interactors/crypto_coins');
 const { createCryptoCoin } = require('../services/crypto_coins');
 const { coinSerializer, cryptoCoinsWithPriceSerializer } = require('../serializers/crypto_coins');
 
@@ -17,6 +17,14 @@ exports.addCrypto = (req, res, next) => {
 exports.getCryptos = (req, res, next) => {
   const user = { ...req.session };
   return getCryptoCoinsListByUser(user)
+    .then(coins => res.status(200).send({ crypto_coins: cryptoCoinsWithPriceSerializer(coins) }))
+    .catch(next);
+};
+
+exports.getTopCryptos = (req, res, next) => {
+  const user = { ...req.session };
+  const { order, top } = req.query;
+  return getTopCryptosByUser(user, order, top)
     .then(coins => res.status(200).send({ crypto_coins: cryptoCoinsWithPriceSerializer(coins) }))
     .catch(next);
 };
