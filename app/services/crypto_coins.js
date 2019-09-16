@@ -4,7 +4,7 @@ const errors = require('../errors');
 const logger = require('../logger');
 const config = require('../../config');
 const { cryptoCoin } = require('../models');
-const { coinMapper } = require('../mappers/crypto_coins');
+const { cryptoCoinMapper } = require('../mappers/crypto_coins');
 
 const getCryptoCoin = (coinId, preferredCurrency = 'usd') => {
   const options = {
@@ -28,10 +28,12 @@ const getCryptoCoin = (coinId, preferredCurrency = 'usd') => {
   });
 };
 
+exports.getCryptoCoinFromBraveApi = getCryptoCoin;
+
 exports.createCryptoCoin = (coinId, userId) =>
   getCryptoCoin(coinId).then(coin => {
     if (!coin.success) throw errors.braveApiError('Crypto Coin not available');
-    return cryptoCoin.create({ ...coinMapper(coin), userId }).catch(err => {
+    return cryptoCoin.create({ ...cryptoCoinMapper(coin), userId }).catch(err => {
       logger.error(err.name);
       if (err.name === 'SequelizeUniqueConstraintError')
         throw errors.addCryptoCoinError('The coin was already added to the user');
@@ -39,9 +41,9 @@ exports.createCryptoCoin = (coinId, userId) =>
     });
   });
 
-exports.findCryptoCoinBy = params =>
+exports.findCryptoCoinsBy = params =>
   cryptoCoin
-    .findOne({
+    .findAll({
       where: { ...params }
     })
     .catch(err => {

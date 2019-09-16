@@ -10,5 +10,6 @@ exports.init = app => {
   app.get('/health', healthCheck);
   app.post('/users', [schemaValidator(userSignUpSchema)], users.signUp);
   app.post('/users/login', [schemaValidator(userLogInSchema)], users.logIn);
-  app.post('/users/add_crypto/:id', [authenticate, schemaValidator(addCryptoSchema)], cryptoCoins.addCypto);
+  app.post('/users/cryptos/:id', [authenticate, schemaValidator(addCryptoSchema)], cryptoCoins.addCrypto);
+  app.get('/users/cryptos', [authenticate], cryptoCoins.getCryptos);
 };

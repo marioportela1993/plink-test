@@ -4,3 +4,11 @@ exports.coinSerializer = coin => ({
   user_id: coin.userId,
   source: coin.source
 });
+
+exports.cryptoCoinWithPriceSerializer = coin => ({
+  coin_name: coin.coin_name,
+  price: coin.last_price,
+  source: coin.source
+});
+
+exports.cryptoCoinsWithPriceSerializer = coins => coins.map(coin => this.cryptoCoinWithPriceSerializer(coin));
